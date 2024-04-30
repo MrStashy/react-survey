@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import RadioButtons from "./RadioButtons";
 import Checkboxes from "./Checkboxes";
 let timeActivities = [];
 
-export default function Form({ setFormData, formData }) {
+export default function Form({ setFormData, formData, answersList, setAnswersList }) {
   
     function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -20,7 +21,8 @@ export default function Form({ setFormData, formData }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
+    console.log(answersList)
+    setAnswersList([...answersList, formData])
     setFormData({
       review: "",
       color: "",
@@ -29,7 +31,6 @@ export default function Form({ setFormData, formData }) {
       username: "",
     });
     timeActivities = [];
-    console.log(formData);
   }
 
   return (
